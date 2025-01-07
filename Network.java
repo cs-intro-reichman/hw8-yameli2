@@ -30,6 +30,9 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         //// Replace the following statement with your code
+        if (name==null) {
+            return null;
+        }
         for(int i =0;i<users.length;i++){
             if(users[i].getName().equals(name)){
                 return users[i];
@@ -44,10 +47,8 @@ public class Network {
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
         //// Replace the following statement with your code
-        if(users.length==userCount)
+        if(name==null||users.length==userCount||getUser(name)!=null){
         return false;
-        if(getUser(name)!=null){
-            return false;
         }
         users[userCount]=new User(name);
         userCount++;
@@ -59,7 +60,7 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        if(getUser(name1)==null|| getUser(name2)==null){
+        if(getUser(name1)==null|| getUser(name2)==null||name1==null||name2==null){
             return false;
         }
         User user1=getUser(name1);
@@ -77,7 +78,7 @@ public class Network {
         return null;
        }
        int numOfMutualFollower=0;
-       for(int i =0;i<users.length;i++){
+       for(int i =0;i<userCount;i++){
         if(user.countMutual(users[i])>=numOfMutualFollower && !(users[i].getName().equals(user.getName()))){
           numOfMutualFollower=user.countMutual(users[i]); 
           recommendedToFollow=users[i].getName() ;  
@@ -92,7 +93,7 @@ public class Network {
         //// Replace the following statement with your code
         String mostPopularUser=null;
         int maxFollowersCount=0;
-        for(int i=0;i<users.length;i++){
+        for(int i=0;i<userCount;i++){
             int countFollowers=followeeCount(users[i].getName());
             if(countFollowers>=maxFollowersCount){
                 maxFollowersCount=countFollowers;
