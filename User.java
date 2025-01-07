@@ -44,7 +44,7 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         //// Replace the following statement with your code
-        for(int i =0;i<follows.length;i++)
+        for(int i =0;i<fCount;i++)
         {
             if(this.follows[i].equals(name))
             return true;
@@ -87,7 +87,7 @@
         for(int k =0;k<follows.length;k++)
         {
             if(this.follows[k].equals(name)){
-                for(int i =k;i<fCount;i++){
+                for(int i =k;i<fCount-1;i++){
                     follows[i]=follows[i+1];
                 }
                 follows[fCount-1]=null;
