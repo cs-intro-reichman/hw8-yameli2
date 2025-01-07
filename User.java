@@ -106,8 +106,7 @@
     /*  Notice: This is the size of the intersection of the two follows lists. */
     public int countMutual(User other) {
          //// Replace the following statement with your code
-         if(other==null)
-         {
+         if(other==null) {
             return -1;
          }
          int mutualCount = 0;
