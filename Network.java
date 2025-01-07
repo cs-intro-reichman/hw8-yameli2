@@ -34,7 +34,7 @@ public class Network {
             return null;
         }
         for(int i =0;i<users.length;i++){
-            if(users[i].getName().equals(name)){
+            if(users[i]!=null && users[i].getName().equals(name)){
                 return users[i];
             } 
         }
@@ -123,7 +123,9 @@ public class Network {
        String usersDiscription="";
        for(int i =0;i<userCount;i++)
        {
-         usersDiscription+=users[i].toString();
+        if(users[i]!=null){
+            usersDiscription+=users[i].toString();
+        }
        }
        return usersDiscription;
     }
