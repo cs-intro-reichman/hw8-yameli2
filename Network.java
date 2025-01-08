@@ -65,7 +65,9 @@ public class Network {
             return false;
         }
         User user1=getUser(name1);
-        //
+        if (user1 == null || getUser(name2) == null) {
+            return false;
+        }
        return user1.addFollowee(name2);
     }
     
@@ -75,29 +77,33 @@ public class Network {
         //// Replace the following statement with your code
        User user=getUser(name);
        String recommendedToFollow=null;
+       int maxMutualFollowers = -1;
        if(user==null)
        {
         return null;
        }
-       int numOfMutualFollower=0;
        for(int i =0;i<userCount;i++){
-        if(user.countMutual(users[i])>=numOfMutualFollower && !(users[i].getName().equals(user.getName()))){
-          numOfMutualFollower=user.countMutual(users[i]); 
-          recommendedToFollow=users[i].getName() ;  
+        User otherUser = users[i];
+        
+        if (!user.getName().equals(otherUser.getName())) {
+            int numOfMutualFollower = user.countMutual(otherUser);
+            if (numOfMutualFollower > maxMutualFollowers) {
+                maxMutualFollowers = numOfMutualFollower;
+                recommendedToFollow= otherUser.getName();  
          }
        }
         return recommendedToFollow;
     }
-
+    }
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
         //// Replace the following statement with your code
         String mostPopularUser=null;
-        int maxFollowersCount=0;
+        int maxFollowersCount=-1;
         for(int i=0;i<userCount;i++){
             int countFollowers=followeeCount(users[i].getName());
-            if(countFollowers>=maxFollowersCount){
+            if(countFollowers>maxFollowersCount){
                 maxFollowersCount=countFollowers;
                 mostPopularUser=users[i].getName();
             }    
@@ -126,7 +132,7 @@ public class Network {
        for(int i =0;i<userCount;i++)
        {
         if(users[i]!=null){
-            usersDiscription+=users[i].toString();
+            usersDiscription += users[i].toString() + "\n";
         }
        }
        return usersDiscription;
