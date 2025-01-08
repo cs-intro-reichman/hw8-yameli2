@@ -61,13 +61,13 @@
         if(name==null||follows(name)){
             return false;
         }
-        if(this.getfCount()==10){
+        if(fCount==10){
             return false;
         }
        else{
         for(int j=0;j<follows.length;j++)
         {
-            if(this.follows[j]==null){
+            if(follows[j]==null){
                 follows[j]=name;
                 fCount++;
                 return true;
@@ -87,7 +87,7 @@
     }
 
          else{
-        for(int k =0;k<fCount;k++)
+        for(int k =0;k<follows.length;k++)
         {
             if(follows[k].equals(name)){
                 for(int i =k;i<fCount-1;i++){
