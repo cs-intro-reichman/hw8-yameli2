@@ -134,7 +134,7 @@ public class Network {
        String usersDiscription="Network: ";
        for(int i =0;i<userCount;i++)
        {
-            usersDiscription += users[i].toString() + "\n";
+            usersDiscription = usersDiscription + "\n"+ users[i].toString();
         }   
             return usersDiscription;
     }
