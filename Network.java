@@ -61,11 +61,14 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        if(name1.toLowerCase().equals(name2.toLowerCase())||name1==null||name2==null){
+        if (name1 == null || name2 == null) {
             return false;
         }
-        User user1=getUser(name1);
-        if (user1 == null || getUser(name2) == null) {
+    
+        User user1 = getUser(name1);
+        User user2 = getUser(name2);
+        
+        if (user1 == null || user2 == null || name1.equals(name2)) {
             return false;
         }
        return user1.addFollowee(name2);
@@ -131,10 +134,8 @@ public class Network {
        String usersDiscription="Network: ";
        for(int i =0;i<userCount;i++)
        {
-        if(users[i]!=null){
             usersDiscription += users[i].toString() + "\n";
-        }
-       }
-       return usersDiscription;
+        }   
+            return usersDiscription;
     }
 }
