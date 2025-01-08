@@ -92,8 +92,8 @@ public class Network {
                 recommendedToFollow= otherUser.getName();  
          }
        }
-        return recommendedToFollow;
     }
+    return recommendedToFollow;
     }
     /** Computes and returns the name of the most popular user in this network: 
      *  The user who appears the most in the follow lists of all the users. */
