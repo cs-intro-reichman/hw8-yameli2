@@ -50,7 +50,8 @@ public class Network {
         if(name==null||users.length==userCount||getUser(name)!=null){
         return false;
         }
-        users[userCount]=new User(name.toLowerCase());
+      //  User newUser= new User(name);
+        users[userCount]=new User(name);
         userCount++;
         return true;
     }
@@ -60,10 +61,11 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        if(getUser(name1.toLowerCase())==null|| getUser(name2.toLowerCase())==null||name1==null||name2==null){
+        if(name1.toLowerCase().equals(name2.toLowerCase())||name1==null||name2==null){
             return false;
         }
         User user1=getUser(name1);
+        //
        return user1.addFollowee(name2);
     }
     
@@ -120,7 +122,7 @@ public class Network {
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
        //// Replace the following statement with your code
-       String usersDiscription="";
+       String usersDiscription="Network: ";
        for(int i =0;i<userCount;i++)
        {
         if(users[i]!=null){
