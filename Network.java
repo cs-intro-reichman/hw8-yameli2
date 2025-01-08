@@ -33,8 +33,8 @@ public class Network {
         if (name==null) {
             return null;
         }
-        for(int i =0;i<users.length;i++){
-            if(users[i]!=null && users[i].getName().equals(name)){
+        for(int i =0;i<userCount;i++){
+            if(users[i]!=null && users[i].getName().toLowerCase().equals(name.toLowerCase())){
                 return users[i];
             } 
         }
@@ -50,7 +50,7 @@ public class Network {
         if(name==null||users.length==userCount||getUser(name)!=null){
         return false;
         }
-        users[userCount]=new User(name);
+        users[userCount]=new User(name.toLowerCase());
         userCount++;
         return true;
     }
@@ -60,7 +60,7 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
-        if(getUser(name1)==null|| getUser(name2)==null||name1==null||name2==null){
+        if(getUser(name1.toLowerCase())==null|| getUser(name2.toLowerCase())==null||name1==null||name2==null){
             return false;
         }
         User user1=getUser(name1);

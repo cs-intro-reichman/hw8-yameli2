@@ -44,12 +44,13 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         //// Replace the following statement with your code
+        
         if(name==null){
             return false;
         }
         for(int i =0;i<fCount;i++)
         {
-            if(follows[i]!=null && follows[i].equals(name))
+            if(follows[i]!=null && follows[i].toLowerCase().equals(name.toLowerCase()))
             return true;
         }
         return false; 
@@ -58,6 +59,7 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         //// Replace the following statement with your code
+        
         if(name==null||follows(name)){
             return false;
         }
@@ -82,14 +84,14 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
-        if(name==null||!follows(name)){
+        if(name==null||!follows(name.toLowerCase())){
         return false;
     }
 
          else{
         for(int k =0;k<follows.length;k++)
         {
-            if(follows[k].equals(name)){
+            if(follows[k].toLowerCase().equals(name.toLowerCase())){
                 for(int i =k;i<fCount-1;i++){
                     follows[i]=follows[i+1];
                 }
